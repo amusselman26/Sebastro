@@ -2,29 +2,33 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro"  name="robot">
 
     <gazebo>
-        <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+        <!-- Commenting the below code while attempting to use the diff_drive_controller-->
+        <!-- Plugin invalid since its for ROS1, use this: https://github.com/ros-simulation/gazebo_ros_pkgs/blob/noetic-devel/gazebo_plugins/src/gazebo_ros_diff_drive.cpp-->
+        <plugin name="skid_steer_drive" filename="libgazebo_ros_diff_drive.so">
             <updateRate>10.0</updateRate>
             <robotNamespace>/</robotNamespace>
-            <leftFrontJoint>front_left_wheel_joint</leftFrontJoint>
-            <rightFrontJoint>front_right_wheel_joint</rightFrontJoint>
-            <rightRearJoint>rear_right_wheel_joint</rightRearJoint>
-            <leftRearJoint>rear_left_wheel_joint</leftRearJoint>
-            <wheelSeparation>0.34</wheelSeparation>
-            <wheelDiameter>0.1</wheelDiameter>
+
+            <!-- <num_wheel_pairs>2</num_wheel_pairs> -->
+            <left_joint>front_left_wheel_joint</left_joint>
+            <right_joint>front_right_wheel_joint</right_joint>
+            <!-- <rightRearJoint>rear_right_wheel_joint</rightRearJoint>
+            <leftRearJoint>rear_left_wheel_joint</leftRearJoint> -->
+            <wheel_separation>0.34</wheel_separation>
+            <wheel_diameter>0.1</wheel_diameter>
             <torque>10</torque>
 
-            <commandTopic>cmd_vel</commandTopic>
-            <odometryTopic>odom</odometryTopic>
-            <odometryFrame>odom</odometryFrame>
-            <robotBaseFrame>base_link</robotBaseFrame>
-            <publishWheelTF>true</publishWheelTF>
-            <publishOdom>true</publishOdom>
+            <command_topic>cmd_vel</command_topic>
+            <odometry_topic>odom</odometry_topic>
+            <odometry_frame>odom</odometry_frame>
+            <robot_base_frame>base_link</robot_base_frame>
+           
             <publishWheelJointState>true</publishWheelJointState>
             <covariance_x>0.0001</covariance_x>
             <covariance_y>0.0001</covariance_y>
             <covariance_z>0.01</covariance_z>
 
         </plugin>
+
 
     </gazebo>
 </robot>
