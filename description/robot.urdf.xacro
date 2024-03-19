@@ -6,6 +6,6 @@
     <xacro:include filename="gazebo_control.xacro" />
     <xacro:include filename="depth_camera.xacro" />
     <xacro:include filename="ros2_control.xacro" />
-
+    <parameters>$(find Sebastro)/config/my_controllers.yaml</parameters>
 
 </robot>
